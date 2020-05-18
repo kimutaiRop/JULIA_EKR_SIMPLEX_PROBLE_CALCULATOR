@@ -1,1 +1,21 @@
 "# JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR" 
+
+
+This is a julia language copy of a program that I made in python
+To get the python version go to
+ https://github.com/kimutaiRop/EKR-SIMPLEX-PROBLEM-CALCULATOR
+
+ To run the program you just need to install julia go to
+ https://julialang.org/download/
+ download version v1.4 and above and install
+
+ to run the program clone the program and move to the dir where you cloned the project to 
+ run
+    
+`julia simplex.py`
+
+julia has no good way of displaying matrices as of now so you might need to do some few copy and pest of the output
+of the output arrays
+
+The project is still under developmment and is also free to expand, everyting is build using functions which breaks the code to smaller
+easy to manage code
