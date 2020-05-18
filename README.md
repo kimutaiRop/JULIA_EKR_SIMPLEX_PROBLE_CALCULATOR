@@ -12,7 +12,7 @@ To get the python version go to
  to run the program clone the program and move to the dir where you cloned the project to 
  run
     
-`julia simplex.py`
+`julia simplex.jl`
 
 julia has no good way of displaying matrices as of now so you might need to do some few copy and pest of the output
 of the output arrays
