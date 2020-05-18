@@ -10,7 +10,7 @@ function main()
 
     #making array our of the equiz
 
-    i_type = 1 # change this to either one or two depending on problem (1=>maximization, 2=> minimization)
+    i_type = 2 # change this to either one or two depending on problem (1=>maximization, 2=> minimization)
     # inputing data
     arr = [
         4 2; 
@@ -30,9 +30,9 @@ function main()
         solution = vcat(solution, [0, 0 - sum(solution)]) #add the siolution row
 
         final, col_names,row_names,del_cols = format_min(arr, z_row) #call data formatter
-        deletable = 
+        println()
         final = hcat(final, vcat(solution...))
-        minimization(final,col_names,row_names)
+        minimization(final,col_names,row_names, del_cols)
     end
 end
 
@@ -81,7 +81,18 @@ function format_min(arr, last_row)
     arr = hcat(arr, eye_mat_neg)
     arr = hcat(arr, eye_mat)
     final = vcat(arr, last_row)
-    return (final,col_names)
+    
+    size_cols = size(col_names)[1]
+    extra_cols =  [string("x",size_cols+n) for n = 1:n_rows]
+    col_names = vcat(col_names,extra_cols)
+
+    size_cols = size(col_names)[1] 
+    del_cols =  [string("x",size_cols+n) for n = 1:n_rows]
+    col_names = vcat(col_names,del_cols)
+    row_names = vcat(del_cols,["z","z1"])
+
+    col_names = vcat(col_names, ["sol"])
+    return (final, col_names,row_names,del_cols)
 end
 
 function check_neg(x)
@@ -98,8 +109,8 @@ function maximization(arr,col_names,row_names)
         """)
 end
 
-function minimization(arr,col_names,row_names)
-    final_t,col_names,row_names = solve(arr, 2, col_names,row_names)
+function minimization(arr,col_names,row_names,del_cols)
+    final_t,col_names,row_names = solve(arr, 2, col_names,row_names, del_cols)
     println("""
         columns:      :  $col_names 
         rows          :  $row_names               
@@ -108,7 +119,7 @@ function minimization(arr,col_names,row_names)
         """)
 end
 
-function solve(arr, place, col_names,row_names)
+function solve(arr, place, col_names,row_names,arg...)
     last_row = arr[end,:][1:end - 1]
     min_element_last_row, pivot_col_index = findmin(last_row)
     while min_element_last_row < 0
@@ -151,13 +162,12 @@ function solve(arr, place, col_names,row_names)
         arr = new_arr
 
         if place ===2
-            arr,d_columns,d_rows = solve_array_min(arr,col_names,row_names,pivot_row_index,pivot_col_index)
-            row_names = d_rows
-            col_names = d_columns
+            arr,d_columns,d_rows = solve_array_min(arr,col_names,row_names,pivot_row_index,pivot_col_index,arg[1])
         elseif place ===1
             arr,d_columns,d_rows = solve_array_max(arr,col_names,row_names,pivot_row_index,pivot_col_index)
         end
-
+        row_names = d_rows
+        col_names = d_columns
         last_row = arr[end,:][1:end - 1]
         min_element_last_row, pivot_col_index = findmin(last_row)
     end
@@ -171,9 +181,21 @@ function solve_array_max(arr,d_columns,d_rows,pivot_row_index,pivot_col_index)
     return (arr,d_columns,d_rows)
 end
 
-function solve_array_min(arr,d_columns,d_rows,pivot_row_index,pivot_col_index)
+function solve_array_min(arr,d_columns,d_rows,pivot_row_index,pivot_col_index, del_col)
+    pivot_col_name = d_columns[pivot_col_index]
+    pivot_row_name = d_rows[pivot_row_index]
+
+    in_del = pivot_row_name in del_col
+    if in_del
+        drop_el_index = findall(x->x==pivot_row_name,d_columns)[1]
+    
+        d_columns = d_columns[1:end .!=drop_el_index]
+        arr =arr[1:end,1:end .!=drop_el_index]
+    end
+    d_rows[pivot_row_index] = pivot_col_name
     # alter the array column and row names following the tablus method for minimization
     return (arr,d_columns,d_rows)
 end
+
 main()
 
