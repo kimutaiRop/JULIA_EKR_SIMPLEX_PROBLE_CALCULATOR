@@ -35,6 +35,6 @@ the image show solution for the equation bellow
 
 ## making array out of the equiz
 
-you can change between silving maximization and minimization in the `main()` function by reading the comments there
+you can change between solving maximization and minimization in the `main()` function by reading the comments there
 
 this will soon be made easier by including user input, this is however good incase you want to use this as a module
