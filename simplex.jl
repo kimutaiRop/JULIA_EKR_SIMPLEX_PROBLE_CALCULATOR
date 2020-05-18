@@ -29,9 +29,10 @@ function main()
     else
         solution = vcat(solution, [0, 0 - sum(solution)]) #add the siolution row
 
-        final, col_names = format_min(arr, z_row) #call data formatter
+        final, col_names,row_names,del_cols = format_min(arr, z_row) #call data formatter
+        deletable = 
         final = hcat(final, vcat(solution...))
-        minimization(final)
+        minimization(final,col_names,row_names)
     end
 end
 
@@ -117,9 +118,12 @@ function solve(arr, place, col_names,row_names)
         pivot_row_index  = findmin(check_neg.(pivot_column[1:end - place]) .\ abs.(last_column[1:end - place]))[2] # element wise division 
         pivot_row = arr[pivot_row_index,:]
         pivot_element = pivot_column[pivot_row_index]
+
         println("""
         columns:      :  $col_names 
-        row           :  $row_names               
+        row           :  $row_names 
+        tableu        :  $arr
+
         pivot element :  $pivot_element |> row :  $pivot_row_index |> column :  $pivot_col_index
         pivot row     :  $pivot_row
         pivot column  :  $pivot_column
