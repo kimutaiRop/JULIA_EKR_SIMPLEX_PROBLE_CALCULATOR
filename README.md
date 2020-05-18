@@ -19,3 +19,6 @@ of the output arrays
 
 The project is still under developmment and is also free to expand, everyting is build using functions which breaks the code to smaller
 easy to manage code
+
+
+![alt text](https://github.com/kimutaiRop/JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR/blob/master/Annotation%202020-05-18%20090516.png)
