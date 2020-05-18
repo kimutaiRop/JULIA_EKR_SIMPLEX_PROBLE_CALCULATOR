@@ -35,4 +35,9 @@ the image show solution for the equation bellow
     #2x1 + 3x2 => 4
     #z = 3x1 + x2
 
-    #making array our of the equiz
+
+#making array our of the equiz
+
+you can change between silving maximization and minimization in the    `main() ` function by reading the comments there
+
+this will soon be made easier by including user input, this is however good incase you want to use this as a module
