@@ -20,5 +20,7 @@ of the output arrays
 The project is still under developmment and is also free to expand, everyting is build using functions which breaks the code to smaller
 easy to manage code
 
+you can clone the project and expand or add new features and push to this repository then ask me to to marge 
+
 
 ![alt text](https://github.com/kimutaiRop/JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR/blob/master/Annotation%202020-05-18%20090516.png)
