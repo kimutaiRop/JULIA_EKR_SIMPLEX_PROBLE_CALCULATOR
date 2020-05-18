@@ -1,4 +1,4 @@
-"# JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR" 
+# JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR
 
 
 This is a julia language copy of a program that I made in python
