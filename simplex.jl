@@ -1,13 +1,26 @@
 using LinearAlgebra
 
 function main()
-    i_type = 2
+    #(x1 and x2 being products)
+    #example equiz (maximize for the equiz bellow)
+    #4x1 + 2x2 <= 4
+    #2x1 + 3x2 <= 4
+
+    #z = 3x1 + x2
+
+    #making array our of the equiz
+
+    i_type = 2 # change this to either one or two depending on problem (1=>maximization, 2=> minimization)
     # inputing data
     arr = [
         4 2; 
         2 3; 
-        ]
+        ] # change this to your values for the equation
+    
+    #making solution column out of the equiz
     solution = [4,4]
+
+    #making the z row out of the equiz
     z_row = [3,1]
     if i_type == 1
         solution = vcat(solution, [0])
@@ -121,10 +134,12 @@ function solve(arr, place)
 end
 
 function solve_array_max(arr,d_columns,d_rows,pivot_row_index,pivot_col_index)
+    # alter the array column and row names following the tablus method for maximization
     return (arr,d_columns,d_rows)
 end
 
 function solve_array_min(arr,d_columns,d_rows,pivot_row_index,pivot_col_index)
+    # alter the array column and row names following the tablus method for minimization
     return (arr,d_columns,d_rows)
 end
 main()

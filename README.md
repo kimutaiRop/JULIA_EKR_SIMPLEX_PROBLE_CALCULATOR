@@ -24,3 +24,16 @@ you can clone the project and expand or add new features and push to this reposi
 
 
 ![alt text](https://github.com/kimutaiRop/JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR/blob/master/Annotation%202020-05-18%20090516.png)
+
+the image show solution for the equation bellow
+
+`
+ #(x1 and x2 being products)
+    #example equiz (maximize for the equiz bellow)
+    #4x1 + 2x2 <= 4
+    #2x1 + 3x2 <= 4
+
+    #z = 3x1 + x2
+
+    #making array our of the equiz
+`
