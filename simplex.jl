@@ -1,26 +1,72 @@
 using LinearAlgebra
 
+function read_data()
+    arr = []
+    print("""
+
+    This is console input format of the data
+
+    """)
+    print("how many product do you have : ")
+    n_prods = readline()
+    n_prods = parse(Int,n_prods)
+    print("\nhow many constrains do you have : ")
+    n_const = readline()
+    n_const = parse(Int,n_const)
+    print("Would you like to give the constrain names?(Y/N) :")
+    ent_const = readline()
+    const_names = [string("const_",x) for x = 1:n_const]
+    sol_col = [x for x = 1:n_const]
+    z_row = [x for x = 1:n_prods]
+    if uppercase(ent_const) == "Y"
+        for i in 1:n_const
+            print("enter constrain $i name :")
+            nm = readline()'
+            const_names[i] = nm
+        end
+    end
+    t = 0
+    for n in const_names
+        rw = [x for x=1:n_prods]
+        for x in 1:n_prods
+            print("enter the value of x$x in $n : ")
+            val = readline()
+            rw[x] =parse(Int,val)
+        end
+        rw = hcat(rw...)
+        if t == 0
+            arr = rw
+        else
+            arr = vcat(arr,rw)
+        end
+        t+=1
+        print("equate $n to : ")
+        sol_val = readline()
+        sol_val = parse(Int, sol_val)
+        sol_col[t] = sol_val
+        print("\n")
+    end
+    for x in 1:n_prods
+        print("enter the value of x$x in Z equation : ")
+        val = readline()
+        z_row[x] =parse(Int,val)
+    end
+    return (z_row,arr,sol_col)
+end
+
 function main()
-    #(x1 and x2 being products)
-    #example equiz (maximize for the equiz bellow)
-    #4x1 + 2x2 <= 4
-    #2x1 + 3x2 <= 4
 
-    #z = 3x1 + x2
+    print("""
+        problem types:
 
-    #making array our of the equiz
+            1 : maximization
+            2 : minimization
 
-    i_type = 2 # change this to either one or two depending on problem (1=>maximization, 2=> minimization)
-    # inputing data
-    arr = [
-        4 2
-        2 3
-    ] # change this to your values for the equation
-
-    #making solution column out of the equiz
-    solution = [4, 4]
-    #making the z row out of the equiz
-    z_row = [3, 1]
+    """)
+    print("What problem type would you like to solve : ")
+    i_type = readline()
+    i_type = parse(Int,i_type)
+    z_row, arr,solution = read_data()
     if i_type == 1
         solution = vcat(solution, [0])
         final, col_names, row_names = format_max(arr, z_row) #call data formatter
@@ -30,7 +76,6 @@ function main()
         solution = vcat(solution, [0, 0 - sum(solution)]) #add the siolution row
 
         final, col_names, row_names, del_cols = format_min(arr, z_row) #call data formatter
-        println()
         final = hcat(final, vcat(solution...))
         minimization(final, col_names, row_names, del_cols)
     end
@@ -66,7 +111,7 @@ end
 
 function format_min(arr, last_row)
     col_names = [string("x", i) for i = 1:size(arr)[2]]
-    n_cols, n_rows = size(arr)
+    n_rows,n_cols = size(arr)
     sub_last_r = 0 .- sum(arr, dims = 1)
     last_row = last_row
     eye_mat = Matrix{Float64}(I, n_rows, n_rows)
