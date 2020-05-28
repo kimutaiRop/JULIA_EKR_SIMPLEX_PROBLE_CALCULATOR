@@ -16,22 +16,22 @@ function read_data()
     print("Would you like to give the constrain names?(Y/N) :")
     ent_const = readline()
     const_names = [string("const_",x) for x = 1:n_const]
-    sol_col = [x for x = 1:n_const]
-    z_row = [x for x = 1:n_prods]
+    sol_col = [x/1 for x = 1:n_const]
+    z_row = [x/1 for x = 1:n_prods]
     if uppercase(ent_const) == "Y"
         for i in 1:n_const
             print("enter constrain $i name :")
-            nm = readline()'
+            nm = readline()
             const_names[i] = nm
         end
     end
     t = 0
     for n in const_names
-        rw = [x for x=1:n_prods]
+        rw = [x/1 for x=1:n_prods]
         for x in 1:n_prods
             print("enter the value of x$x in $n : ")
             val = readline()
-            rw[x] =parse(Int,val)
+            rw[x] =parse(Float32,val)
         end
         rw = hcat(rw...)
         if t == 0
@@ -42,16 +42,104 @@ function read_data()
         t+=1
         print("equate $n to : ")
         sol_val = readline()
-        sol_val = parse(Int, sol_val)
+        sol_val = parse(Float32, sol_val)
         sol_col[t] = sol_val
         print("\n")
     end
     for x in 1:n_prods
         print("enter the value of x$x in Z equation : ")
         val = readline()
-        z_row[x] =parse(Int,val)
+        z_row[x] =parse(Float32,val)
     end
     return (z_row,arr,sol_col)
+end
+function help_call()
+    print("""
+    --HELP:
+    USING SIMPLEX CALCULATOR
+
+    ----- requirements -----
+
+    1 -> julia - install julia (https://julialang.org)
+
+    ----- choices -----
+
+    1 -> Simplex maximization problems like maximization of profits
+    2 -> Simplex minimization problem like minimization of expenditure in company
+
+    0 -> Help on using the calculator
+
+    ----- best data -----
+
+    please rename your products to X1, X2, X3...Xn
+    for easy feeding of data
+
+    n - being the number of products you have
+
+    example: computers - X1
+             printers  - X2
+
+    you can use: - whole numbers
+                 - decimal numbers
+                 - fractions
+            Entering the value you are prompted to. the decimal are not
+            rounded off on entering. this ensures high accuracy
+
+    you are advised to use values less than 10000000
+    you can standardize the data by dividing it to small values
+    and re-converting after getting solution
+
+
+    ----- assumptions -----
+
+    I assume that you know how to read the simplex table.
+    I also assume that you know how to interpret the data in the table and So
+    I did not interpret the data
+
+    This program is to be used by statisticians and also those with
+    an idea about the simplex problems
+
+    This programs though need no much knowledge on mathematics/statistics
+
+    ----- mixed simplex problem -----
+
+    I have not make a choice for mixed simplex problem and so for now
+    the program may not provide a solution for such problems
+
+    ----- declaimer -----
+
+    Only the console  option of this program is available yet but the GUI might be available
+    at some point and when available, I will update on how to use the GUI.
+
+    The program has been tested with several examples but maybe all the exception
+    may not have been countered fully. using this program will be an alternative
+    you chose and so we I am not expecting a complain in failure to meet your expectation as indicated in the LICENCE.
+
+    #You can suggest additions or even send me bugs in the program in the email below.#
+
+    kimrop20@gmail.com
+
+
+
+    ----- licence -----
+
+    This program is to be used freely. You can also re-edit or modify or even add to
+    this program.
+    you can also share but you should not change the developer ownership.
+
+    😄 I will appreciate credit given to me
+
+    ----- developer -----
+
+    developed by [ELPHAS KIMUTAI ROP] .
+    Student Bsc. Statistics and programming.
+    Machakos University, Kenya.
+    Email   : kimrop20@gmail.com
+    Website : http://bestcoders.herokuapp.com
+
+
+
+    """)
 end
 
 function main()
@@ -62,22 +150,28 @@ function main()
             1 : maximization
             2 : minimization
 
+            0: help
+
     """)
     print("What problem type would you like to solve : ")
     i_type = readline()
     i_type = parse(Int,i_type)
-    z_row, arr,solution = read_data()
     if i_type == 1
+        z_row, arr,solution = read_data()
         solution = vcat(solution, [0])
         final, col_names, row_names = format_max(arr, z_row) #call data formatter
         final[:, end] = solution #add the solution columns
         maximization(final, col_names, row_names)
-    else
+    elseif i_type==2
+        z_row, arr,solution = read_data()
         solution = vcat(solution, [0, 0 - sum(solution)]) #add the siolution row
-
         final, col_names, row_names, del_cols = format_min(arr, z_row) #call data formatter
         final = hcat(final, vcat(solution...))
         minimization(final, col_names, row_names, del_cols)
+    elseif i_type == 0
+        help_call()
+    else
+        println("please run the program againa dn select the correct choice")
     end
 end
 
