@@ -8,7 +8,7 @@ To get the python version go to
  https://julialang.org/download/
  download version v1.4 and above and install
 
- to run the program clone the program and move to the dir where you cloned the project to 
+ to run the program clone the program and move to the dir where you cloned the project to
  run
 
 `julia simplex.jl`
@@ -19,19 +19,19 @@ of the output arrays
 The project is still under developmment and is also free to expand, everyting is build using functions which breaks the code to smaller
 easy to manage code
 
-you can clone the project and expand or add new features and push to this repository then ask me to to marge 
+you can clone the project and expand or add new features and push to this repository then ask me to to marge
 
 ![alt text](https://github.com/kimutaiRop/JULIA_EKR_SIMPLEX_PROBLE_CALCULATOR/blob/master/Annotation%202020-05-18%20090516.png)
 
 the image show solution for the equation bellow
 
-    #(x1 and x2 being products)
-    
+    #(x₁ and x₂ being products)
+
     #example equiz (mimimize for the equiz bellow)
 
-    #4x1 + 2x2 >= 4
-    #2x1 + 3x2 => 4
-    #z = 3x1 + x2
+    #4x₁ + 2x₂ >= 4
+    #2x₁ + 3x₂ >= 4
+    #z = 3x₁ + x₂
 
 ## making array out of the equiz
 

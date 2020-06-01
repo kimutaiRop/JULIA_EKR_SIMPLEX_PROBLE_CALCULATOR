@@ -71,21 +71,20 @@ function help_call()
 
     ----- best data -----
 
-    please rename your products to X1, X2, X3...Xn
+    please rename your products to X₁, X₂, X₃...Xₙ
     for easy feeding of data
 
     n - being the number of products you have
 
-    example: computers - X1
-             printers  - X2
+    example: computers - X₁
+             printers  - X₂
 
     you can use: - whole numbers
                  - decimal numbers
-                 - fractions
             Entering the value you are prompted to. the decimal are not
             rounded off on entering. this ensures high accuracy
 
-    you are advised to use values less than 10000000
+    you are advised to use values less than 1 million
     you can standardize the data by dividing it to small values
     and re-converting after getting solution
 
@@ -97,16 +96,21 @@ function help_call()
     I did not interpret the data
 
     This program is to be used by statisticians and also those with
-    an idea about the simplex problems
+    an idea on the simplex algorithmn
 
     This programs though need no much knowledge on mathematics/statistics
 
     ----- mixed simplex problem -----
 
-    I have not make a choice for mixed simplex problem and so for now
+    I have not made a choice for mixed simplex problem and so for now
     the program may not provide a solution for such problems
 
     ----- declaimer -----
+
+    This program does not print the tables the way the python program does,
+    you can copy a tableu array returned and pest in the julia interactive terminal
+    (see the image linked to this repository)
+    and the tables will be more clear (I did not want to use any library just to show the tables)
 
     Only the console  option of this program is available yet but the GUI might be available
     at some point and when available, I will update on how to use the GUI.
@@ -115,11 +119,10 @@ function help_call()
     may not have been countered fully. using this program will be an alternative
     you chose and so we I am not expecting a complain in failure to meet your expectation as indicated in the LICENCE.
 
+    you are however free to add on the program but just incase you cannot,
     #You can suggest additions or even send me bugs in the program in the email below.#
 
     kimrop20@gmail.com
-
-
 
     ----- licence -----
 
