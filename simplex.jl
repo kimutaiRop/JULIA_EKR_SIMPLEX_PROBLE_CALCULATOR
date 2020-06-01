@@ -147,7 +147,7 @@ end
 
 function main()
 
-    print("""
+    printstyled("""
         problem types:
 
             1 : maximization
@@ -155,7 +155,7 @@ function main()
 
             0: help
 
-    """)
+    """,color=:light_blue, bold=true)
     print("What problem type would you like to solve : ")
     i_type = readline()
     i_type = parse(Int,i_type)
@@ -340,3 +340,6 @@ function solve_array_min(arr,d_columns,d_rows,pivot_row_index,pivot_col_index,de
 end
 
 main()
+
+print("exit the program now (y/Y) :")
+ext = readline()
