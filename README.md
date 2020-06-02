@@ -13,7 +13,7 @@ To get the python version go to
 
 `julia simplex.jl`
 
-julia has no good way of displaying matrices as of now so you might need to do some few copy and pest of the output
+julia has no good way of displaying matrices as of now so you might need to do some few copy and paste of the output
 of the output arrays
 
 The project is still under developmment and is also free to expand, everyting is build using functions which breaks the code to smaller
@@ -33,8 +33,3 @@ the image show solution for the equation bellow
     #2x₁ + 3x₂ >= 4
     #z = 3x₁ + x₂
 
-## making array out of the equiz
-
-you can change between solving maximization and minimization in the `main()` function by reading the comments there
-
-this will soon be made easier by including user input, this is however good incase you want to use this as a module
