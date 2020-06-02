@@ -33,3 +33,4 @@ the image show solution for the equation bellow
     #2x₁ + 3x₂ >= 4
     #z = 3x₁ + x₂
 
+I have designed to develop a web for this using react and julia and I am almost done , the web will be open sourced and hosted when ready to give a user interface, you can contribute to the development later by cloning and pushing improvements 
