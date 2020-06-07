@@ -4,8 +4,8 @@ This is a julia language copy of a program that I made in python
 To get the python version go to
  https://github.com/kimutaiRop/EKR-SIMPLEX-PROBLEM-CALCULATOR
  
- the julia version is also linked to a web which is available in http://statis.herokuapp.com/
-
+ the julia version is also linked to a web server which is available in https://github.com/kimutaiRop/statis
+ 
 
  To run the program you just need to install julia go to
  https://julialang.org/download/
