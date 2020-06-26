@@ -5,7 +5,7 @@ To get the python version go to
  https://github.com/kimutaiRop/EKR-SIMPLEX-PROBLEM-CALCULATOR
  
  the julia version is also linked to a web server which is available in https://github.com/kimutaiRop/statis
- 
+ which is hosted at https://statis.herokuapp.com/simplex
 
  To run the program you just need to install julia go to
  https://julialang.org/download/
